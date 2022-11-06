@@ -4,13 +4,15 @@ import { useToast, FlatList } from 'native-base';
 import { api } from '../services/api';
 
 import { Loading } from '../components/Loading'
+import { EmptyMyPoolList } from '../components/EmptyMyPoolList'
 import { Game, GameProps } from '../components/Game'
 
 interface Props {
   poolId: string;
+  code: string;
 }
 
-export function Guesses({ poolId }: Props) {
+export function Guesses({ poolId, code }: Props) {
 
   const [isLoading, setIsLoading] = useState(true);
   const [games, setGames] = useState<GameProps[]>([]);
@@ -95,6 +97,8 @@ export function Guesses({ poolId }: Props) {
           onGuessConfirm={() => handleGuessConfirm(item.id)}
         />
       )}
+      _contentContainerStyle={{ pb: 10}}
+      ListEmptyComponent={() => <EmptyMyPoolList code={code} />}
     />
   );
 }
