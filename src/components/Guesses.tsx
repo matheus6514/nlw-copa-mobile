@@ -24,7 +24,6 @@ export function Guesses({ poolId }: Props) {
       setIsLoading(true);
 
       const response = await api.get(`/pools/${poolId}/games`);
-
       setGames(response.data.games)
 
     }catch(error) {
