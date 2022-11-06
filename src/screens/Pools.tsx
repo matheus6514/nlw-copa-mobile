@@ -39,11 +39,12 @@ export function Pools(){
       setIsLoading(false);
     }
 
-    useFocusEffect(useCallback(() => {
-      fetchPools();
-    }, []))
   }
 
+  useFocusEffect(useCallback(() => {
+    fetchPools();
+  }, []))
+  
   return(
     <VStack flex={1} bgColor="gray.900">
       <Header title="Meus bolões" />
@@ -61,7 +62,12 @@ export function Pools(){
         <FlatList
           data={pools}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <PoolCard data={item} />}
+          renderItem={({ item }) => (
+            <PoolCard
+              data={item}
+              onPress={() => navigate('details', { id: item.id })}
+            />
+          )}
           ListEmptyComponent={() => <EmptyPoolList />}
           showsVerticalScrollIndicator={false}
           _contentContainerStyle={{ pb: 10 }}
