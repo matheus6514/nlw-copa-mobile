@@ -2,7 +2,7 @@ import { Button, HStack, Text, useTheme, VStack } from 'native-base';
 import { X, Check } from 'phosphor-react-native';
 import { getName } from 'country-list';
 import dayjs from 'dayjs';
-import ptBR from 'dayjs/locale/ptBR';
+import ptBR from 'dayjs/locale/pt-br';
 
 import { Team } from './Team';
 
