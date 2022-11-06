@@ -5,12 +5,13 @@ import { useRoute } from '@react-navigation/native';
 
 import {  api } from '../services/api';
 
+import { Option } from '../components/Option'
 import { Header } from '../components/Header';
 import { Loading } from '../components/Loading';
+import { Guesses } from '../components/Guesses'
 import { PoolCardProps } from '../components/PoolCard'
 import { PoolHeader } from '../components/PoolHeader'
 import { EmptyMyPoolList } from '../components/EmptyMyPoolList'
-import { Option } from '../components/Option'
 
 
 interface RouteParams {
@@ -89,6 +90,8 @@ export function Details() {
               onPress={() => setOptionSelected('ranking')}
             />
           </HStack>
+
+          <Guesses poolId={poolDetails.id} />
         </VStack>
 
         : <EmptyMyPoolList code={poolDetails.code} />
